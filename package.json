@@ -1,0 +1,33 @@
+{
+  "name": "tspace-utils",
+  "version": "1.0.2",
+  "description": "tspace utils method helper",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "tspace",
+    "utils",
+    "helper",
+    "time",
+    "collection",
+    "logger",
+    "log",
+    "test",
+    "stress test",
+    "validate"
+  ],
+  "homepage": "https://github.com/thanathip41",
+  "license": "MIT",
+  "author": "Thanathip (https://github.com/thanathip41)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thanathip41/tspace-utils.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  }
+}
