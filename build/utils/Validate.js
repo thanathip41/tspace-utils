@@ -26,7 +26,7 @@ var RULE_TYPE;
     RULE_TYPE["EMAIL"] = "email";
     RULE_TYPE["REQUIRED"] = "required";
     RULE_TYPE["REGEX"] = "regex";
-    RULE_TYPE["REGEX_OPPOSITE"] = "regex opposite";
+    RULE_TYPE["OPPOSITE_REGEX"] = "opposite regex ";
     RULE_TYPE["ENUM"] = "enum";
     RULE_TYPE["WHEN"] = "when";
     RULE_TYPE["OPTIONAL"] = "optional";
@@ -47,7 +47,8 @@ class RuleValidate {
         return;
     }
     /**
-     * validate required value. value is not empty
+     * The 'required' method is used to validate required value. value is not empty.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
@@ -57,7 +58,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * validate value is Number only can be types string or number
+     * The 'number' method is used to validate value is Number only can be types string or number.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
@@ -67,7 +69,7 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value type of Number only
+     * The 'numberStrict' method is used to validate value type of Number only
      * @param {string} message  error message
      * @return {this} this
      */
@@ -77,7 +79,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value type of String
+     * The 'string' method is used to validate that value pattern is string
+     *
      * @param {string} message  error message
      * @return {this} this
      */
@@ -87,7 +90,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value type of Array only
+     * The 'array' method is used to validate that value pattern is array.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
@@ -97,7 +101,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value pattern is email address
+     * The 'email' method is used to validate that value pattern is email.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
@@ -107,7 +112,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value pattern is date
+     * The 'date' method is used to  validate that the value pattern is a date.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
@@ -117,7 +123,7 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value with a regex string for new RegExp
+     * The 'regex' method is used to validate value with a regex string for new RegExp
      * @param {string} regexRule regex
      * @param {string} message  error message
      * @return {this} this
@@ -128,18 +134,18 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value with a regex string for new RegExp *opposite method regex
+     * The 'regexOpposite' method is used to validate value with a regex string for new RegExp *opposite method regex
      * @param {string} regexRule regex
      * @param {string} message  error message
      * @return {this} this
      */
     regexOpposite(regexRule, message = '') {
-        this._pushRule(`${RULE_TYPE.REGEX_OPPOSITE}:${regexRule}`);
+        this._pushRule(`${RULE_TYPE.OPPOSITE_REGEX}:${regexRule}`);
         this._pushMessage(message);
         return this;
     }
     /**
-     * Validate value confirm like some value target with a key
+     * The 'confirm' method is used to validate value confirm like some value target with a key
      * @param {string} key key name for compare
      * @param {string} message  error message
      * @return {this} this
@@ -150,7 +156,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value has length not higher than max length
+     * The 'maxLength' method is used to validate value has length not higher than max length.
+     *
      * @param {number} limit limit characters , if array max length of array
      * @param {string} message  error message
      * @return {this} this
@@ -161,7 +168,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value has length not lower than min length
+     * The 'minLength' method is used to validate value has length not lower than min length.
+     *
      * @param {number} limit limit characters , if array min length of array
      * @param {string} message  error message
      * @return {this} this
@@ -172,7 +180,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value has length not higher than max length
+     * The 'max' method is used to validate value has length not higher than max length.
+     *
      * @param {number} limit limit characters
      * @param {string} message  error message
      * @return {this} this
@@ -183,7 +192,7 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value has length not lower than min length
+     * The 'min' method is used to validate value has length not lower than min length
      * @param {number} limit limit characters
      * @param {string} message  error message
      * @return {this} this
@@ -194,7 +203,7 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value in lists of enum values
+     * The 'enum' method is used to validate value in lists of enum values
      * @param {array} data between data
      * @param {string} message  error message
      * @return {this} this
@@ -205,7 +214,8 @@ class RuleValidate {
         return this;
     }
     /**
-     * Validate value type of Boolean
+     * The 'required' method is used to validate value type of Boolean
+     *
      * @param {string} message  error message
      * @return {this} this
      */
@@ -215,6 +225,8 @@ class RuleValidate {
         return this;
     }
     /**
+     * The 'object' method is used to validate keys values in the object
+     *
      * if has 1 arguments. default message = callback
      * @param {string} message
      * @param {function | undefined} cb callback Rule for validate values
@@ -230,6 +242,8 @@ class RuleValidate {
         return this;
     }
     /**
+     * The 'arrayObject' method is used to validate array properties of objects.
+     *
      * if has 1 arguments. default message = callback
      * @param {string} message
      * @param {function | undefined} cb callback Rule for validate values
@@ -245,24 +259,14 @@ class RuleValidate {
         return this;
     }
     /**
-     * if condition is a true will be validate of data.
+     * The 'when' method is used to validate the rule when the condition is a true will be executed validation of data
+     *
      * @param {string} condition
      * @param {function | undefined} cb callback Rule for validate values
      * @param {string} message
      * @return {this} this
      */
     when(condition, cb, message = '') {
-        if (typeof cb !== 'function')
-            throw new Error('Invalid callback');
-        if (!condition)
-            return this;
-        const rule = cb(RuleValidate);
-        this._pushRule(RULE_TYPE.WHEN);
-        this._pushMessage(message);
-        this.NEST_RULES = Object.assign(Object.assign({}, this.NEST_RULES), rule);
-        return this;
-    }
-    customFunction(condition, cb, message = '') {
         if (typeof cb !== 'function')
             throw new Error('Invalid callback');
         if (!condition)
@@ -309,6 +313,7 @@ class Validate {
         this.ERROR_MESSAGES = [];
         this.ERRORS = {};
         this.REQUESTS = {};
+        this.VALIDATE = {};
         /**
          *
          * check data is correct in the rule validation
@@ -369,30 +374,6 @@ class Validate {
             if (rule === RULE_TYPE.BOOLEAN) {
                 return this._boolean(reqInput, message);
             }
-            if (rule === null || rule === void 0 ? void 0 : rule.includes(RULE_TYPE.COMFIRM)) {
-                return this._confirm(requests, reqInput, (_a = rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.COMFIRM}:`)) === null || _a === void 0 ? void 0 : _a.pop(), message);
-            }
-            if (rule.includes(RULE_TYPE.REGEX)) {
-                return this._regex(reqInput, rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.REGEX}:`).pop(), message);
-            }
-            if (rule.includes(RULE_TYPE.REGEX_OPPOSITE)) {
-                return this._regexOpposite(reqInput, rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.REGEX_OPPOSITE}:`).pop(), message);
-            }
-            if (rule.includes(RULE_TYPE.ENUM)) {
-                return this._enum(reqInput, (_c = (_b = rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.ENUM}:`)) === null || _b === void 0 ? void 0 : _b.pop()) === null || _c === void 0 ? void 0 : _c.split(','), message);
-            }
-            if (rule === null || rule === void 0 ? void 0 : rule.includes(RULE_TYPE.MAX_LENGTH)) {
-                return this._maxLength(reqInput, rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.MAX_LENGTH}:`).pop(), message);
-            }
-            if (rule === null || rule === void 0 ? void 0 : rule.includes(RULE_TYPE.MAX)) {
-                return this._max(reqInput, rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.MAX}:`).pop(), message);
-            }
-            if (rule.includes(RULE_TYPE.MIN_LENGTH)) {
-                return this._minLength(reqInput, rule.split(`${RULE_TYPE.MIN_LENGTH}:`).pop(), message);
-            }
-            if (rule.includes(RULE_TYPE.MIN)) {
-                return this._min(reqInput, rule.split(`${RULE_TYPE.MIN}:`).pop(), message);
-            }
             if (rule === RULE_TYPE.ARRAY) {
                 return this._array(reqInput, message);
             }
@@ -407,6 +388,30 @@ class Validate {
             }
             if (rule === RULE_TYPE.REQUIRED) {
                 return this._required(reqInput, message);
+            }
+            if (this._ruleEqual(rule, RULE_TYPE.COMFIRM)) {
+                return this._confirm(requests, reqInput, (_a = rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.COMFIRM}:`)) === null || _a === void 0 ? void 0 : _a.pop(), message);
+            }
+            if (this._ruleEqual(rule, RULE_TYPE.REGEX)) {
+                return this._regex(reqInput, rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.REGEX}:`).pop(), message);
+            }
+            if (this._ruleEqual(rule, RULE_TYPE.OPPOSITE_REGEX)) {
+                return this._regexOpposite(reqInput, rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.OPPOSITE_REGEX}:`).pop(), message);
+            }
+            if (this._ruleEqual(rule, RULE_TYPE.ENUM)) {
+                return this._enum(reqInput, (_c = (_b = rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.ENUM}:`)) === null || _b === void 0 ? void 0 : _b.pop()) === null || _c === void 0 ? void 0 : _c.split(','), message);
+            }
+            if (this._ruleEqual(rule, RULE_TYPE.MAX_LENGTH)) {
+                return this._maxLength(reqInput, rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.MAX_LENGTH}:`).pop(), message);
+            }
+            if (this._ruleEqual(rule, RULE_TYPE.MAX)) {
+                return this._max(reqInput, rule === null || rule === void 0 ? void 0 : rule.split(`${RULE_TYPE.MAX}:`).pop(), message);
+            }
+            if (this._ruleEqual(rule, RULE_TYPE.MIN_LENGTH)) {
+                return this._minLength(reqInput, rule.split(`${RULE_TYPE.MIN_LENGTH}:`).pop(), message);
+            }
+            if (this._ruleEqual(rule, RULE_TYPE.MIN)) {
+                return this._min(reqInput, rule.split(`${RULE_TYPE.MIN}:`).pop(), message);
             }
             return null;
         };
@@ -463,18 +468,20 @@ class Validate {
             return null;
         };
         this._arrayObject = (rules, data, message) => {
-            var _a;
             if (this._type(data) !== 'Array') {
                 return [message === '' ? 'Array only' : message];
             }
+            let errors = [];
             for (const index in data) {
                 const element = data[index];
                 const validate = new Validate(element);
                 validate._validate(rules);
-                if ((_a = Object.keys(validate.errors())) === null || _a === void 0 ? void 0 : _a.length) {
-                    return (Object.assign({ index: Number(index) }, validate.errors()));
-                }
+                if (!Object.keys(validate.errors()).length)
+                    continue;
+                errors.push(Object.assign({ index: Number(index) }, validate.errors()));
             }
+            if (Object.keys(errors).length)
+                return errors;
             return null;
         };
         this._boolean = (reqInput, message) => {
@@ -567,10 +574,15 @@ class Validate {
                 return message;
             return null;
         };
-        this._enum = (reqInput, data, message) => {
+        this._enum = (reqInput, enumLists, message) => {
             if (this._isEmpty(message))
-                message = `must be in lists [ ${data.join(', ')} ] only`;
-            if (!data.some(d => d === reqInput))
+                message = `must be in lists ${enumLists.map(e => `'${e}'`).join(', ')} only`;
+            if (Array.isArray(reqInput)) {
+                if (!reqInput.some(r => enumLists.includes(r)))
+                    return message;
+                return null;
+            }
+            if (!enumLists.some(d => d === reqInput))
                 return message;
             return null;
         };
@@ -633,7 +645,7 @@ class Validate {
         this.REQUESTS = data;
     }
     _validate(dataRules) {
-        var _a, _b, _c;
+        var _a;
         const requests = this.REQUESTS;
         let errorValidate = {};
         const { RULES, MESSAGES, NEST_RULES } = dataRules;
@@ -661,10 +673,10 @@ class Validate {
             if (Array.isArray(rawRules)) {
                 for (const rawRule of rawRules) {
                     if (typeof rawRule === 'function') {
-                        const r = rawRule();
-                        if ((r === null || r === void 0 ? void 0 : r.error) == null || !r.error)
+                        const r = rawRule(reqInput);
+                        if (r == null)
                             continue;
-                        errorValidate = this._errorValidate(errorValidate, property, (_a = r === null || r === void 0 ? void 0 : r.message) !== null && _a !== void 0 ? _a : 'error message');
+                        errorValidate = this._errorValidate(errorValidate, property, r);
                         continue;
                     }
                     const { RULES, MESSAGES, NEST_RULES } = rawRule;
@@ -687,10 +699,10 @@ class Validate {
             const { RULES, MESSAGES, NEST_RULES } = dataRules[property];
             if ([RULES, MESSAGES, NEST_RULES].every(v => v == null)) {
                 if (typeof rawRules === 'function') {
-                    const r = rawRules();
-                    if ((r === null || r === void 0 ? void 0 : r.error) == null || !r.error)
+                    const r = rawRules(reqInput);
+                    if (r == null)
                         continue;
-                    errorValidate = this._errorValidate(errorValidate, property, (_b = r === null || r === void 0 ? void 0 : r.message) !== null && _b !== void 0 ? _b : 'error message');
+                    errorValidate = this._errorValidate(errorValidate, property, r !== null && r !== void 0 ? r : 'error message');
                 }
             }
             for (const index in RULES) {
@@ -708,13 +720,13 @@ class Validate {
                 errorValidate = this._errorValidate(errorValidate, property, error);
             }
         }
-        if ((_c = Object.keys(errorValidate)) === null || _c === void 0 ? void 0 : _c.length) {
+        if ((_a = Object.keys(errorValidate)) === null || _a === void 0 ? void 0 : _a.length) {
             this.ERRORS = errorValidate;
         }
         return;
     }
     _validatePromise(dataRules) {
-        var _a, _b, _c;
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const requests = this.REQUESTS;
             let errorValidate = {};
@@ -743,10 +755,10 @@ class Validate {
                 if (Array.isArray(rawRules)) {
                     for (const rawRule of rawRules) {
                         if (typeof rawRule === 'function') {
-                            const r = yield rawRule();
-                            if ((r === null || r === void 0 ? void 0 : r.error) == null || !r.error)
+                            const r = yield rawRule(reqInput);
+                            if (r == null)
                                 continue;
-                            errorValidate = this._errorValidate(errorValidate, property, (_a = r === null || r === void 0 ? void 0 : r.message) !== null && _a !== void 0 ? _a : 'error message');
+                            errorValidate = this._errorValidate(errorValidate, property, r !== null && r !== void 0 ? r : 'error message');
                             continue;
                         }
                         const { RULES, MESSAGES, NEST_RULES } = rawRule;
@@ -769,10 +781,10 @@ class Validate {
                 const { RULES, MESSAGES, NEST_RULES } = dataRules[property];
                 if ([RULES, MESSAGES, NEST_RULES].every(v => v == null)) {
                     if (typeof rawRules === 'function') {
-                        const r = yield rawRules();
-                        if ((r === null || r === void 0 ? void 0 : r.error) == null || !r.error)
+                        const r = yield rawRules(reqInput);
+                        if (r == null)
                             continue;
-                        errorValidate = this._errorValidate(errorValidate, property, (_b = r === null || r === void 0 ? void 0 : r.message) !== null && _b !== void 0 ? _b : 'error message');
+                        errorValidate = this._errorValidate(errorValidate, property, r !== null && r !== void 0 ? r : 'error message');
                     }
                 }
                 for (const index in RULES) {
@@ -790,11 +802,14 @@ class Validate {
                     errorValidate = this._errorValidate(errorValidate, property, error);
                 }
             }
-            if ((_c = Object.keys(errorValidate)) === null || _c === void 0 ? void 0 : _c.length) {
+            if ((_a = Object.keys(errorValidate)) === null || _a === void 0 ? void 0 : _a.length) {
                 this.ERRORS = errorValidate;
             }
             return;
         });
+    }
+    _ruleEqual(rule, type) {
+        return (rule === null || rule === void 0 ? void 0 : rule.split(':')[0]) === type;
     }
     _errorValidate(errors, property, err) {
         return errors = Object.assign(Object.assign({}, errors), { [property]: errors.hasOwnProperty(property)

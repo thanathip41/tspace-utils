@@ -59,7 +59,9 @@ const data = {
         nestObject: {
             test : ""
         }
-    }
+    },
+    func : 3,
+    funcs : [3,3]
 }
 
 const validate = new Validate(data)
@@ -98,7 +100,20 @@ validate.check((Rule : Rule) => {
                     }
                 })
             }
-        })
+        }),
+        func : (v) => {
+            if(v !== 3 ) return 'Number is not equal to 3'
+            
+            return null
+        },
+        funcs : [
+            (v) => {
+                if(!Array.isArray(v)) return 'Value is not an array'
+                return null
+            },
+
+            new Rule().required().enum(['test1','test2']),
+        ],
     }      
 })
 
@@ -127,19 +142,18 @@ function sum (a, b) {
 validatePromise.checkPromise((rule : Rule) => {   
     return {
         dataPromise : [
-            async () => {
-                return {
-                    error : await sumPromise(1,3) !== 3, // if true will trigger error
-                    message : 'Number is not equal to 3'
-                }
+            async (v) => {
+
+                if(await sumPromise(1,3) !== 3) return 'Number is not equal to 3'
+
+                return null
             },
             new Rule().required().enum(['test1','test2']),
         ],
-        data : () => {
-            return {
-                error : sum(1,3) !== 3,
-                message : 'Number is not equal to 3'
-            }
+        data : (v) => {
+            if(sum(1,3) !== 3) return 'Number is not equal to 3'
+
+            return null
         },
     }      
 })

@@ -31,6 +31,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
   *
   * @module tspace-utils
 */
-const tspaceUtils = __importStar(require("./utils"));
+const utils = __importStar(require("./utils"));
 __exportStar(require("./utils"), exports);
-exports.default = tspaceUtils;
+exports.default = utils;

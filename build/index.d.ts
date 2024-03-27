@@ -3,6 +3,6 @@
   *
   * @module tspace-utils
 */
-import * as tspaceUtils from './utils';
+import * as utils from './utils';
 export * from './utils';
-export default tspaceUtils;
+export default utils;

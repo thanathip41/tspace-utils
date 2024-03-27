@@ -5,110 +5,122 @@ declare class RuleValidate {
     private _pushMessage;
     private _pushRule;
     /**
-     * validate required value. value is not empty
+     * The 'required' method is used to validate required value. value is not empty.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
     required(message?: string): this;
     /**
-     * validate value is Number only can be types string or number
+     * The 'number' method is used to validate value is Number only can be types string or number.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
     number(message?: string): this;
     /**
-     * Validate value type of Number only
+     * The 'numberStrict' method is used to validate value type of Number only
      * @param {string} message  error message
      * @return {this} this
      */
     numberStrict(message?: string): this;
     /**
-     * Validate value type of String
+     * The 'string' method is used to validate that value pattern is string
+     *
      * @param {string} message  error message
      * @return {this} this
      */
     string(message?: string): this;
     /**
-     * Validate value type of Array only
+     * The 'array' method is used to validate that value pattern is array.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
     array(message?: string): this;
     /**
-     * Validate value pattern is email address
+     * The 'email' method is used to validate that value pattern is email.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
     email(message?: string): this;
     /**
-     * Validate value pattern is date
+     * The 'date' method is used to  validate that the value pattern is a date.
+     *
      * @param {string} message  error message
      * @return {this} this
      */
     date(message?: string): this;
     /**
-     * Validate value with a regex string for new RegExp
+     * The 'regex' method is used to validate value with a regex string for new RegExp
      * @param {string} regexRule regex
      * @param {string} message  error message
      * @return {this} this
      */
     regex(regexRule: string, message?: string): this;
     /**
-     * Validate value with a regex string for new RegExp *opposite method regex
+     * The 'regexOpposite' method is used to validate value with a regex string for new RegExp *opposite method regex
      * @param {string} regexRule regex
      * @param {string} message  error message
      * @return {this} this
      */
     regexOpposite(regexRule: string, message?: string): this;
     /**
-     * Validate value confirm like some value target with a key
+     * The 'confirm' method is used to validate value confirm like some value target with a key
      * @param {string} key key name for compare
      * @param {string} message  error message
      * @return {this} this
      */
     confirm(key: string, message?: string): this;
     /**
-     * Validate value has length not higher than max length
+     * The 'maxLength' method is used to validate value has length not higher than max length.
+     *
      * @param {number} limit limit characters , if array max length of array
      * @param {string} message  error message
      * @return {this} this
      */
     maxLength(limit: number, message?: string): this;
     /**
-     * Validate value has length not lower than min length
+     * The 'minLength' method is used to validate value has length not lower than min length.
+     *
      * @param {number} limit limit characters , if array min length of array
      * @param {string} message  error message
      * @return {this} this
      */
     minLength(limit: number, message?: string): this;
     /**
-     * Validate value has length not higher than max length
+     * The 'max' method is used to validate value has length not higher than max length.
+     *
      * @param {number} limit limit characters
      * @param {string} message  error message
      * @return {this} this
      */
     max(limit: number, message?: string): this;
     /**
-     * Validate value has length not lower than min length
+     * The 'min' method is used to validate value has length not lower than min length
      * @param {number} limit limit characters
      * @param {string} message  error message
      * @return {this} this
      */
     min(limit: number, message?: string): this;
     /**
-     * Validate value in lists of enum values
+     * The 'enum' method is used to validate value in lists of enum values
      * @param {array} data between data
      * @param {string} message  error message
      * @return {this} this
      */
     enum(data: Array<string>, message?: string): this;
     /**
-     * Validate value type of Boolean
+     * The 'required' method is used to validate value type of Boolean
+     *
      * @param {string} message  error message
      * @return {this} this
      */
     boolean(message?: string): this;
     /**
+     * The 'object' method is used to validate keys values in the object
+     *
      * if has 1 arguments. default message = callback
      * @param {string} message
      * @param {function | undefined} cb callback Rule for validate values
@@ -116,6 +128,8 @@ declare class RuleValidate {
      */
     object(cb: Function, message?: string): this;
     /**
+     * The 'arrayObject' method is used to validate array properties of objects.
+     *
      * if has 1 arguments. default message = callback
      * @param {string} message
      * @param {function | undefined} cb callback Rule for validate values
@@ -123,14 +137,14 @@ declare class RuleValidate {
      */
     arrayObject(cb: Function, message?: string): this;
     /**
-     * if condition is a true will be validate of data.
+     * The 'when' method is used to validate the rule when the condition is a true will be executed validation of data
+     *
      * @param {string} condition
      * @param {function | undefined} cb callback Rule for validate values
      * @param {string} message
      * @return {this} this
      */
     when(condition: string | number | undefined | null | Boolean, cb: Function, message?: string): this;
-    customFunction(condition: string | number | undefined | null | Boolean, cb: Function, message?: string): this;
     /**
      * not a validate of data
      * @return {this} this
@@ -138,16 +152,17 @@ declare class RuleValidate {
     optional(): this;
     toString(): this;
 }
-export interface Rule {
+export type Rule = {
     new (): RuleValidate;
-}
-export interface Rules {
+};
+export type Rules = {
     new (): RuleValidate;
-}
+};
 export declare class Validate {
     private ERROR_MESSAGES;
     private ERRORS;
     private REQUESTS;
+    private VALIDATE;
     /**
      * Create a validate
      * @param {object} data {object} for validation
@@ -202,6 +217,7 @@ export declare class Validate {
     private _validate;
     private _validatePromise;
     private _checkRules;
+    private _ruleEqual;
     private _type;
     private _typeObject;
     private _isEmpty;

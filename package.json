@@ -1,23 +1,24 @@
 {
   "name": "tspace-utils",
-  "version": "1.0.2",
-  "description": "tspace utils method helper",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "1.0.3",
+  "description": "tspace-utils is a library functions and methods helper",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "files": [
-    "dist"
+    "build"
   ],
   "keywords": [
     "tspace",
+    "tspace-utils",
     "utils",
+    "validate",
     "helper",
     "time",
     "collection",
     "logger",
     "log",
     "test",
-    "stress test",
-    "validate"
+    "stress test"
   ],
   "homepage": "https://github.com/thanathip41",
   "license": "MIT",
