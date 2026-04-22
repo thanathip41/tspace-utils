@@ -2,10 +2,10 @@
   "name": "tspace-utils",
   "version": "1.0.5",
   "description": "tspace-utils is a library of helper functions and methods.",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "build"
+    "dist"
   ],
   "keywords": [
     "tspace",
@@ -28,7 +28,7 @@
     "url": "https://github.com/thanathip41/tspace-utils.git"
   },
   "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build"
+    "dist": "tsc",
+    "prepare": "npm run dist"
   }
 }
