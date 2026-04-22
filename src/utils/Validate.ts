@@ -24,10 +24,7 @@ enum RULE_TYPE {
     MIN_LENGTH = 'min length',
 }
 
-type TRuleCallbackObject = (Rule : Rule) => Record<string , RuleValidate | Function | (RuleValidate | Function)[]>
-
-type TRuleCallback = (Rule : Rule) => RuleValidate | Function | (RuleValidate | Function)[] 
-
+type RuleCallback = (Rule : Rule) => Record<string , RuleValidate | Function | (RuleValidate | Function)[]> | RuleValidate
 class RuleValidate {
     private RULES : string[] = []
     private RAWS : any[] = []
@@ -125,7 +122,7 @@ class RuleValidate {
      * @param {string} message  error message 
      * @return {this} this
      */
-    array (cb ?: TRuleCallback ,message : string = '') : this {
+    array (cb ?: RuleCallback ,message : string = '') : this {
 
         if(cb == null) {
             this._pushRule(RULE_TYPE.ARRAY)
@@ -153,7 +150,7 @@ class RuleValidate {
      * @param {function | undefined} cb callback Rule for validate values
      * @return {this} this
      */
-    arrayObject (cb : TRuleCallbackObject, message : string = '') : this {
+    arrayObject (cb : RuleCallback, message : string = '') : this {
 
         if(typeof cb !== 'function') throw new Error('Invalid callback')
 
@@ -358,7 +355,7 @@ class RuleValidate {
      * @param {function | undefined} cb callback Rule for validate values
      * @return {this} this
      */
-    object (cb : TRuleCallbackObject ,message : string = '') : this {
+    object (cb : RuleCallback ,message : string = '') : this {
 
         if(typeof cb !== 'function') throw new Error('Invalid callback')
 
@@ -379,7 +376,7 @@ class RuleValidate {
      * @param {string} message
      * @return {this} this
      */
-    when (condition : string | number | undefined | null | Boolean , cb : TRuleCallback, message : string = '') : this {
+    when (condition : string | number | undefined | null | Boolean , cb : RuleCallback, message : string = '') : this {
 
         if(typeof cb !== 'function') throw new Error('Invalid callback')
         if(!condition) return this
@@ -467,7 +464,7 @@ export class Validate {
      * @param {Rule} callback callback Rule for validation
      * @return {this} this
      */
-    check = (callback : TRuleCallbackObject): void => {
+    check = (callback : RuleCallback): void => {
 
         const callbackRule = callback(RuleValidate)
 
@@ -482,7 +479,7 @@ export class Validate {
      * @param {Rule} callback callback Rule for validation
      * @return {this} this
      */
-    checkPromise = async (callback : TRuleCallbackObject): Promise<void> => {
+    checkPromise = async (callback : RuleCallback): Promise<void> => {
 
         const callbackRule = callback(RuleValidate)
 
