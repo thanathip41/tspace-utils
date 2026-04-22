@@ -1,6 +1,6 @@
 {
   "name": "tspace-utils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "tspace-utils is a library of helper functions and methods.",
   "main": "build/index.js",
   "types": "build/index.d.ts",

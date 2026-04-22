@@ -145,9 +145,11 @@ export class Logger {
    * @return {void}
    */
   error (err:any): void {
+    const message = err.message || 'unknow message';
+
     this._pushLogFile ({
       type : this.LOG_TYPE.ERROR,
-      message : err.message || 'unknow message',
+      message : typeof message === 'object' ? JSON.stringify(err.message,null,2): message,
       stack : this._findStack(err)
     })
    

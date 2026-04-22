@@ -26,7 +26,7 @@ enum RULE_TYPE {
 
 type TRuleCallbackObject = (Rule : Rule) => Record<string , RuleValidate | Function | (RuleValidate | Function)[]>
 
-type TRuleCallback = (Rule : Rule) => RuleValidate | Function | (RuleValidate | Function)[]
+type TRuleCallback = (Rule : Rule) => RuleValidate | Function | (RuleValidate | Function)[] 
 
 class RuleValidate {
     private RULES : string[] = []
@@ -482,7 +482,7 @@ export class Validate {
      * @param {Rule} callback callback Rule for validation
      * @return {this} this
      */
-    checkPromise = async (callback : TRuleCallback): Promise<void> => {
+    checkPromise = async (callback : TRuleCallbackObject): Promise<void> => {
 
         const callbackRule = callback(RuleValidate)
 
@@ -495,7 +495,7 @@ export class Validate {
      * 
      * @return {boolean} boolean
      */
-    fails = (): boolean => !!Object.keys(this.ERRORS)?.length ?? true
+    fails = (): boolean => !!Object.keys(this.ERRORS)?.length || true
 
     /**
      * 
@@ -1035,7 +1035,7 @@ export class Validate {
     }
 
     private _email = (reqInput:string, message:string) => {
-        const regex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
         if(this._isEmpty(message)) message =  `The email is an invalid email type` 
 
