@@ -492,7 +492,7 @@ export class Validate {
      * 
      * @return {boolean} boolean
      */
-    fails = (): boolean => !!Object.keys(this.ERRORS)?.length || true
+    fails = (): boolean => Boolean(Object.keys(this.ERRORS).length)
 
     /**
      * 
